@@ -2,7 +2,7 @@ import yaml
 import argparse
 
 
-def parse(container, docker_file):
+def parse(container, docker_file='docker-compose.yml'):
     with open(docker_file) as content:
         container = container
         parsedYaml = yaml.load(content)

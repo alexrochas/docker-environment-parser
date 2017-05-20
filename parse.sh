@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 usage() { { echo "Usage: $0 [-d <docker-file-path>] [-c <container>]" 1>&2; exit 1; } }
 
@@ -26,7 +26,9 @@ while getopts "d:c:-:" option; do
 done
 
 function _search(){
-	eval $(python $WORK_PATH/compose_to_environment.py -c $CONTAINER -d $DOCKER_FILE)
+	source /dev/stdin < <(echo "$(python $WORK_PATH/compose_to_environment.py -c $CONTAINER -d $DOCKER_FILE)")
 }
 
 _search
+
+bash -i

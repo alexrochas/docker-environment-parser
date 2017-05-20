@@ -9,7 +9,7 @@ def parse(container, docker_file='docker-compose.yml'):
         environment = parsedYaml[container]['environment']
 
         for k, v in environment.items():
-            print("export {}={}".format(k, v))
+            print("export {}={}\n".format(k, v))
 
 
 if __name__ == '__main__':
